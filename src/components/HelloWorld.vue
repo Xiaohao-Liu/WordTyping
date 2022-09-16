@@ -37,6 +37,7 @@ const current_word = ref(null)
 const audio_link = ref(null)
 const audio = ref(null)
 const read_mode = ref(false)
+const only_eng = ref(false)
 
 const handleClick: MenuProps['onClick'] = e => {
   // console.log('click', e);
@@ -101,6 +102,9 @@ const handleOk = (e: MouseEvent) => {
   </div>
   <div class="right-tool">
     <a-switch v-model:checked="read_mode" /> | {{read_mode?"Read Mode":"Test Mode"}}
+    <!-- <div>
+      <a-switch v-model:checked="only_eng" /> | {{only_eng?"English Only":"Full Explains"}}
+    </div> -->
   </div>
   <a-menu
     id="left_menu"
