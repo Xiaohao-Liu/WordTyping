@@ -36,8 +36,10 @@ const w_idx_in_list = ref(0)
 const current_word = ref(null)
 const audio_link = ref(null)
 const audio = ref(null)
+const show_menu = ref(true)
 const read_mode = ref(false)
 const only_eng = ref(false)
+const show_eng = ref(false)
 
 const handleClick: MenuProps['onClick'] = e => {
   // console.log('click', e);
@@ -54,10 +56,12 @@ const titleClick = (e: Event) => {
 };
 
 const prev_ = ()=>{
+  show_eng.value=false;
   if(carousel.value) carousel.value.prev()
 }
 
 const next_ = ()=>{
+  show_eng.value=false;
   if(carousel.value) carousel.value.next()
   // console.log(carousel.value)
 }
@@ -98,17 +102,17 @@ const handleOk = (e: MouseEvent) => {
 </script>
 
 <template>
-  <div class="logo">
+  <div class="logo" @click="show_menu=!show_menu">
   </div>
   <div class="right-tool">
     <a-switch v-model:checked="read_mode" /> | {{read_mode?"Read Mode":"Test Mode"}}
-    <!-- <div>
+    <div v-if="read_mode">
       <a-switch v-model:checked="only_eng" /> | {{only_eng?"English Only":"Full Explains"}}
-    </div> -->
+    </div>
   </div>
   <a-menu
     id="left_menu"
-    style="width: 256px"
+    :class="show_menu?'show':''"
     mode="inline"
     :openKeys="['diji','1532714808107905025']"
     theme="dark"
@@ -130,7 +134,10 @@ const handleOk = (e: MouseEvent) => {
     </a-sub-menu>
   </a-menu>
   
-  <div class="right" v-if="list_id==0">
+  <div
+  :class="show_menu?'right':'right full'"
+  v-if="list_id==0"
+  >
     <a-carousel>
       <div class="item">
         <div class="top">
@@ -141,9 +148,11 @@ const handleOk = (e: MouseEvent) => {
       </div>
     </a-carousel>
   </div>
-  <div class="right" v-else>
+
+  <div :class="show_menu?'right':'right full'"
+  v-else>
     <a-carousel
-    :class="read_mode?'read-mode':''"
+    :class="(read_mode?'read-mode ':'') + (only_eng&&!show_eng?'only-eng':'')"
     :key="base_id + list_id"
     ref="carousel"
     :dots="true"
@@ -151,16 +160,16 @@ const handleOk = (e: MouseEvent) => {
     >
       <div class="item" v-for="w in data[base_id]['data'][list_id]" :key="w.id">
         <div class="top" @click="showModal()">{{w.chinese}}</div>
-        <div class="modal">
-          <p style="font-size:1.4rem;font-weight:bold;" v-if="w.english">{{w.english}}</p>
+        <div class="modal"  @click="show_eng=true">
+          <p class="eng" style="font-size:1.4rem;font-weight:bold;" v-if="w.english">{{w.english}}</p>
           <p v-if="w.sound">{{w.sound}}</p>
-          <p v-if="w.chinese">{{w.chinese}}</p>
-          <p v-if="w.exampleSentence"><span class="tip">Example</span>{{w.exampleSentence}}</p>
-          <p v-if="w.derived"><span class="tip">derived</span>{{w.derived}}</p>
-          <p v-if="w.memory"><span class="tip">memory</span>{{w.memory}}</p>
-          <p v-if="w.synonymous"><span class="tip">synonymous</span>{{w.synonymous}}</p>
-          <p v-if="w.antisense"><span class="tip">antisense</span>{{w.antisense}}</p>
-          <p v-if="w.similarWords"><span class="tip">similar</span>{{w.similarWords}}</p>
+          <p class="f" v-if="w.chinese">{{w.chinese}}</p>
+          <p class="f" v-if="w.exampleSentence"><span class="tip">Example</span>{{w.exampleSentence}}</p>
+          <p class="f" v-if="w.derived"><span class="tip">derived</span>{{w.derived}}</p>
+          <p class="f" v-if="w.memory"><span class="tip">memory</span>{{w.memory}}</p>
+          <p class="f" v-if="w.synonymous"><span class="tip">synonymous</span>{{w.synonymous}}</p>
+          <p class="f" v-if="w.antisense"><span class="tip">antisense</span>{{w.antisense}}</p>
+          <p class="f" v-if="w.similarWords"><span class="tip">similar</span>{{w.similarWords}}</p>
         </div>
       </div>
     </a-carousel>
@@ -242,10 +251,16 @@ const handleOk = (e: MouseEvent) => {
 #left_menu {
   position: absolute;
   top:60px;
-  left:10px;
+  left:-300px;
   border-radius: 10px;
   z-index: 10;
+  width: 256px;
+  transition: ease .2s;
 }
+#left_menu.show{
+  left:10px;
+}
+
 .right {
   position: fixed;
   top:0px;
@@ -253,9 +268,15 @@ const handleOk = (e: MouseEvent) => {
   height: 100vh;
   box-sizing: border-box;
   padding-left: 250px;
+  padding-right: 0px;
   width: 100vw;
   background: black;
+  transition: ease .2s;
   /* overflow-y: scroll; */
+}
+.right.full{
+  padding-left: 125px;
+  padding-right: 125px;
 }
 /* .ant-carousel{
   width: 50%;
@@ -288,7 +309,17 @@ const handleOk = (e: MouseEvent) => {
   text-align: justify;
   line-height: 30px;
   color:white;
+  transition: ease .2s;
+  opacity:1;
 }
+
+.only-eng .item .f{
+  opacity:0;
+}
+.only-eng .item .eng{
+  font-size: 3rem !important;
+}
+
 .read-mode .item .top{
   display:none;
 }
@@ -315,7 +346,11 @@ const handleOk = (e: MouseEvent) => {
   /* width:100%; */
   height: 200px;
   line-height: 200px;
+  transition: ease .2s;
   /* background: red; */
+}
+.right.full .input{
+  padding-left: 0px;
 }
 .input_box{
   width: 200px;
@@ -338,6 +373,10 @@ const handleOk = (e: MouseEvent) => {
   padding-left: 250px;
   width: 100vw;
   width: 100%;
+  transition: ease .2s;
+}
+.right.full .bottom{
+  padding-left: 0px;
 }
 
 .tip{
@@ -351,12 +390,28 @@ const handleOk = (e: MouseEvent) => {
 .right-tool{
   position: fixed;
   top:10px;
+  width: 200px;
+  text-align: left;
   right:10px;
   height:50px;
   line-height: 40px;
   z-index: 11;
   color: white;
 }
+
+@media screen and (max-width: 400px) {
+  .right {
+    padding-left:0px;
+  }
+  .input{
+    padding-left:0px;
+  }
+  .bottom{
+    padding-left:0px;
+  }
+  .item .modal{
+    width: calc(100% - 40px);
+  }
+
+}
 </style>
-
-
