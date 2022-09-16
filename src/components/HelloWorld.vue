@@ -2,6 +2,19 @@
 import { ref } from 'vue'
 import {data} from '../words'
 import { message } from 'ant-design-vue';
+import {getTodayEng} from '../api'
+
+import { onMounted } from 'vue';
+
+const todayEng = ref(null)
+
+onMounted(()=>{
+    getTodayEng().then(res => {
+      todayEng.value = res.data[0]
+    })
+})
+
+
 
 import {
   UnorderedListOutlined,
@@ -79,6 +92,8 @@ const handleOk = (e: MouseEvent) => {
   visible.value = false;
   
 };
+
+
 </script>
 
 <template>
@@ -114,7 +129,11 @@ const handleOk = (e: MouseEvent) => {
   <div class="right" v-if="list_id==0">
     <a-carousel>
       <div class="item">
-        <div class="top">请选择单词列表</div>
+        <div class="top">
+          <div style="font-size:1.2rem;line-height:2rem;">{{todayEng.word}}</div>
+          <div style="font-size:1rem;line-height:1rem;">Definition: {{todayEng.definition}}</div>
+          <edit-filled/>  请选择单词列表
+        </div>
       </div>
     </a-carousel>
   </div>
@@ -231,7 +250,7 @@ const handleOk = (e: MouseEvent) => {
   box-sizing: border-box;
   padding-left: 250px;
   width: 100vw;
-  background: #222;
+  background: black;
   /* overflow-y: scroll; */
 }
 /* .ant-carousel{
@@ -241,7 +260,7 @@ const handleOk = (e: MouseEvent) => {
   text-align: center;
   height: 100vh;
   line-height: 100vh;
-  background: #222;
+  background: black;
   overflow: hidden;
 }
 
