@@ -146,7 +146,7 @@ const handleOk = (e: MouseEvent) => {
     :afterChange="carousel_change"
     >
       <div class="item" v-for="w in data[base_id]['data'][list_id]" :key="w.id">
-        <div class="top">{{w.chinese}}</div>
+        <div class="top" @click="showModal()">{{w.chinese}}</div>
         <div class="modal">
           <p style="font-size:1.4rem;font-weight:bold;" v-if="w.english">{{w.english}}</p>
           <p v-if="w.sound">{{w.sound}}</p>
