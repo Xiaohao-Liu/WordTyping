@@ -105,9 +105,9 @@ const handleOk = (e: MouseEvent) => {
   <div class="logo" @click="show_menu=!show_menu">
   </div>
   <div class="right-tool">
-    <a-switch v-model:checked="read_mode" /> | {{read_mode?"Read Mode":"Test Mode"}}
+    {{read_mode?"Read Mode":"Test Mode"}} | <a-switch v-model:checked="read_mode" />
     <div v-if="read_mode">
-      <a-switch v-model:checked="only_eng" /> | {{only_eng?"English Only":"Full Explains"}}
+      {{only_eng?"English Only":"Full Explains"}} | <a-switch v-model:checked="only_eng" />
     </div>
   </div>
   <a-menu
@@ -391,7 +391,7 @@ const handleOk = (e: MouseEvent) => {
   position: fixed;
   top:10px;
   width: 200px;
-  text-align: left;
+  text-align: right;
   right:10px;
   height:50px;
   line-height: 40px;
@@ -403,6 +403,10 @@ const handleOk = (e: MouseEvent) => {
   .right {
     padding-left:0px;
   }
+  .right.full{
+  padding-left: 0px;
+  padding-right: 0px;
+}
   .input{
     padding-left:0px;
   }
@@ -410,7 +414,7 @@ const handleOk = (e: MouseEvent) => {
     padding-left:0px;
   }
   .item .modal{
-    width: calc(100% - 40px);
+    width: calc(100% - 40px) !important;
   }
 
 }
