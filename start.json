@@ -1,0 +1,10 @@
+{
+	"apps":[
+		{
+		"name":"50DUGRE",
+		"script":"/Users/arron/Projects/50dugre/server.cjs", 
+		"env":{
+			}
+		}
+	]
+}
