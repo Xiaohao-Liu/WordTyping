@@ -130,8 +130,8 @@ const handleOk = (e: MouseEvent) => {
     <a-carousel>
       <div class="item">
         <div class="top">
-          <div style="font-size:1.2rem;line-height:2rem;">{{todayEng.word}}</div>
-          <div style="font-size:1rem;line-height:1rem;">Definition: {{todayEng.definition}}</div>
+          <div style="font-size:1.2rem;line-height:2rem;" v-if="todayEng">{{todayEng.word}}</div>
+          <div style="font-size:1rem;line-height:1rem;" v-if="todayEng">Definition: {{todayEng.definition}}</div>
           <edit-filled/>  请选择单词列表
         </div>
       </div>
