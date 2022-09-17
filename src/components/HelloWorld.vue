@@ -164,7 +164,7 @@ const handleOk = (e: MouseEvent) => {
           <p class="eng" style="font-size:1.4rem;font-weight:bold;" v-if="w.english">{{w.english}}</p>
           <p v-if="w.sound">{{w.sound}}</p>
           <p class="f" v-if="w.chinese">{{w.chinese}}</p>
-          <p class="f" v-if="w.exampleSentence"><span class="tip">Example</span>{{w.exampleSentence}}</p>
+          <p v-if="w.exampleSentence"><span class="tip">Example</span>{{w.exampleSentence}}</p>
           <p class="f" v-if="w.derived"><span class="tip">derived</span>{{w.derived}}</p>
           <p class="f" v-if="w.memory"><span class="tip">memory</span>{{w.memory}}</p>
           <p class="f" v-if="w.synonymous"><span class="tip">synonymous</span>{{w.synonymous}}</p>
