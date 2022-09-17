@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import {data} from '../words'
+import { data, id2name } from '../words'
 import { message } from 'ant-design-vue';
-import {getTodayEng} from '../api'
+import { getTodayEng } from '../api'
 
 import { onMounted } from 'vue';
 
@@ -118,20 +118,20 @@ const handleOk = (e: MouseEvent) => {
     theme="dark"
     @click="handleClick"
   >
-    <a-sub-menu key="diji" @titleClick="titleClick">
+    <a-sub-menu @titleClick="titleClick" v-for="list,key in data" :key="key">
       <template #icon>
         <unordered-list-outlined />
       </template>
-      <template #title>地基词</template>
-      <a-menu-item v-for="list in data['diji']['info']" :key="list.id">{{list.name}}</a-menu-item>
+      <template #title>{{id2name[key]}}</template>
+      <a-menu-item v-for="sublist in list['info']" :key="sublist.id">{{sublist.name}}</a-menu-item>
     </a-sub-menu>
-    <a-sub-menu key="dengding" @titleClick="titleClick">
+    <!-- <a-sub-menu key="dengding" @titleClick="titleClick">
       <template #icon>
         <unordered-list-outlined />
       </template>
       <template #title>登顶词</template>
       <a-menu-item v-for="list in data['dengding']['info']" :key="list.id">{{list.name}}</a-menu-item>
-    </a-sub-menu>
+    </a-sub-menu> -->
   </a-menu>
   
   <div
