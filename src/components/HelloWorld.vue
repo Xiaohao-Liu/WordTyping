@@ -46,9 +46,10 @@ const handleClick: MenuProps['onClick'] = e => {
   base_id.value = e.keyPath[0]
   list_id.value = e.keyPath[1]
   w_idx_in_list.value = 0
+
   current_word.value = data[base_id.value]["data"][list_id.value][w_idx_in_list.value]
   audio_link.value = current_word.value.soundUrl
-  // console.log(data[base_id.value]["data"][list_id.value])
+  console.log(data[base_id.value]["data"][list_id.value])
 };
 
 const titleClick = (e: Event) => {
