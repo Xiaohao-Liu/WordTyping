@@ -18,7 +18,9 @@ const getTodayEng = async ()=>{
 const getCloudEng = async ()=>{
     return axios.get(
         'https://wykxldz.gitee.io/word-typing/collection.json'
-    )
+    ).catch(err=>{
+        return 'error'
+    })
 }
 
 export {

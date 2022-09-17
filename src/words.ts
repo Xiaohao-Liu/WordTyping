@@ -9,9 +9,9 @@ const data = {
     'dengding': {...dengding}
 }
 
-getCloudEng().then(res=>{
-      data['cloud']={...res}
-})
+const cloud = await getCloudEng();
+if(cloud != "error") data['cloud'] = {...cloud}
+console.log(data)
 
 const id2name = {
     'diji': "地基词",
