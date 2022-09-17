@@ -29,7 +29,7 @@ import type { MenuProps } from 'ant-design-vue';
 
 const base_id = ref("diji")
 
-const list_id = ref(0)
+const list_id = ref(-1)
 const input_word = ref("")
 const carousel = ref(null)
 const w_idx_in_list = ref(0)
@@ -137,7 +137,7 @@ const handleOk = (e: MouseEvent) => {
   
   <div
   :class="show_menu?'right':'right full'"
-  v-if="list_id==0"
+  v-if="list_id==-1"
   >
     <a-carousel>
       <div class="item">
