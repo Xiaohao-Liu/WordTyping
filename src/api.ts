@@ -15,6 +15,12 @@ const getTodayEng = async ()=>{
     )
 }
 
+const getCollection = async ()=>{
+    return axios.get(
+        'https://wykxldz.gitee.io/word-typing/collection.json'
+    )
+}
+
 export {
     getTodayEng
 }

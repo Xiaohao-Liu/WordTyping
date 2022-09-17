@@ -69,7 +69,7 @@ const next_ = ()=>{
 const carousel_change = (idx: number)=>{
   w_idx_in_list.value = idx
   current_word.value = data[base_id.value]["data"][list_id.value][w_idx_in_list.value]
-  audio_link.value = current_word.value.soundUrl
+  audio_link.value = ('soundUrl' in current_word.value)?current_word.value.soundUrl:""
   // console.log(w_idx_in_list.value)
 }
 
@@ -317,7 +317,7 @@ const handleOk = (e: MouseEvent) => {
   opacity:0;
 }
 .only-eng .item .eng{
-  font-size: 3rem !important;
+  font-size: 2rem !important;
 }
 
 .read-mode .item .top{
