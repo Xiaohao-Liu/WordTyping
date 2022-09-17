@@ -8,7 +8,7 @@ with open("collection.txt", "r", encoding="utf-8") as f:
     pre_data = []
     pre_idx = -1
     for idx, line in enumerate(f):
-        if line[:2] == "->":
+        if line[:2] == "-=":
             info.append({
                 'id': idx, 
                 'name': line[2:].strip()
