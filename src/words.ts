@@ -10,7 +10,7 @@ const data = {
 }
 
 const cloud = await getCloudEng();
-if(cloud != "error") data['cloud'] = {...cloud}
+if(cloud != "error") data['cloud'] = {...cloud.data}
 console.log(data)
 
 const id2name = {
