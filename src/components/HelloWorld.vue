@@ -400,7 +400,7 @@ const handleOk = (e: MouseEvent) => {
   color: white;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 700px) {
   .right {
     padding-left:0px;
   }
