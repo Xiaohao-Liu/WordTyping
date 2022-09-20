@@ -146,9 +146,9 @@ const handleOk = (e: MouseEvent) => {
   <div :class="show_menu?'right':'right full'" v-else>
     <a-carousel :class="(read_mode?'read-mode ':'') + (only_eng&&!show_eng?'only-eng':'')" :key="base_id + list_id"
       ref="carousel" :dots="true" :afterChange="carousel_change">
-      <div class="item" v-for="w in data[base_id]['data'][list_id]" :key="w.id" @click="showModal()">
+      <div class="item" v-for="w in data[base_id]['data'][list_id]" :key="w.id" @click="show_eng=true">
         <div class="top">{{w.chinese}}</div>
-        <div class="modal" @click="show_eng=true">
+        <div class="modal">
           <p class="eng" style="font-size:1.4rem;font-weight:bold;" v-if="w.english">{{w.english}}</p>
           <p v-if="w.sound">{{w.sound}}</p>
           <p class="f" v-if="w.chinese">{{w.chinese}}</p>
