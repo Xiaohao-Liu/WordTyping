@@ -174,15 +174,13 @@ const handleOk = (e: MouseEvent) => {
       </div>
 
       <a-row class="bottom" justify="end">
-        <a-col :span="6">
-          <a-button class="btn" style="margin-right:20px" ghost="true" shape="round" size="large" @click="prev_()">
-            <LeftOutlined />
-          </a-button>
-          <a-button class="btn" ghost="true" shape="round" size="large" @click="next_()">
-            下一个
-            <RightOutlined />
-          </a-button>
-        </a-col>
+        <a-button class="btn" style="margin-right:20px" ghost="true" shape="round" size="large" @click="prev_()">
+          <LeftOutlined />
+        </a-button>
+        <a-button class="btn" ghost="true" shape="round" size="large" @click="next_()">
+          下一个
+          <RightOutlined />
+        </a-button>
       </a-row>
     </div>
     <audio ref="audio" :src="audio_link"></audio>
@@ -369,6 +367,7 @@ const handleOk = (e: MouseEvent) => {
   bottom: 50px;
   left: 0px;
   box-sizing: border-box;
+  padding-right: 10%;
   padding-left: 250px;
   width: 100vw;
   width: 100%;
