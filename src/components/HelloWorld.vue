@@ -146,8 +146,8 @@ const handleOk = (e: MouseEvent) => {
   <div :class="show_menu?'right':'right full'" v-else>
     <a-carousel :class="(read_mode?'read-mode ':'') + (only_eng&&!show_eng?'only-eng':'')" :key="base_id + list_id"
       ref="carousel" :dots="true" :afterChange="carousel_change">
-      <div class="item" v-for="w in data[base_id]['data'][list_id]" :key="w.id">
-        <div class="top" @click="showModal()">{{w.chinese}}</div>
+      <div class="item" v-for="w in data[base_id]['data'][list_id]" :key="w.id" @click="showModal()">
+        <div class="top">{{w.chinese}}</div>
         <div class="modal" @click="show_eng=true">
           <p class="eng" style="font-size:1.4rem;font-weight:bold;" v-if="w.english">{{w.english}}</p>
           <p v-if="w.sound">{{w.sound}}</p>
@@ -213,7 +213,7 @@ const handleOk = (e: MouseEvent) => {
   backdrop-filter: blur(5px);
   box-shadow: 0px 5px 10px -2px black;
   top: 0px;
-  left: 10px;
+  left: 0px;
   height: 50px;
   line-height: 50px;
   z-index: 11;
@@ -221,7 +221,7 @@ const handleOk = (e: MouseEvent) => {
   font-weight: bold;
   background-image: url('/logo/web_hi_res_512.png');
   width: 100vw;
-  background-position: 10px;
+  background-position: 20px;
   background-size: contain;
   background-repeat: no-repeat;
   text-align: left;
@@ -229,7 +229,7 @@ const handleOk = (e: MouseEvent) => {
 
 .logo::after {
   content: "| Xiaohao Liu";
-  text-indent: 65px;
+  text-indent: 75px;
   display: block;
 }
 
@@ -282,9 +282,12 @@ const handleOk = (e: MouseEvent) => {
 }
 
 .item {
+  /* padding-top: calc(50vh - 100px); */
+  box-sizing: border-box;
+  /* background-color: red; */
   overflow: hidden;
   vertical-align: middle !important;
-  margin-top: -100px;
+  /* margin-top: -100px; */
 }
 
 .item .modal {
