@@ -208,13 +208,11 @@ const handleOk = (e: MouseEvent) => {
 }
 
 .logo {
-  background-color: rgba(0, 0, 0, .2);
-  border-radius: 10px;
+  background-color: black;
   position: fixed;
   backdrop-filter: blur(5px);
-  /* padding-left: 65px; */
-  /* padding-right: 10px; */
-  top: 10px;
+  box-shadow: 0px 5px 10px -2px black;
+  top: 0px;
   left: 10px;
   height: 50px;
   line-height: 50px;
@@ -222,15 +220,16 @@ const handleOk = (e: MouseEvent) => {
   color: white;
   font-weight: bold;
   background-image: url('/logo/web_hi_res_512.png');
-  width: 256px;
+  width: 100vw;
   background-position: 10px;
   background-size: contain;
   background-repeat: no-repeat;
+  text-align: left;
 }
 
 .logo::after {
   content: "| Xiaohao Liu";
-  text-indent: 0px;
+  text-indent: 65px;
   display: block;
 }
 
@@ -375,7 +374,15 @@ const handleOk = (e: MouseEvent) => {
 }
 
 .bottom .btn {
+  color: white !important;
   background-color: #333;
+  border-color: #444;
+}
+
+.bottom .btn:focus,
+.bottom .btn:active {
+  background-color: #111;
+  border-color: #333;
 }
 
 .right.full .bottom {
@@ -392,14 +399,17 @@ const handleOk = (e: MouseEvent) => {
 
 .right-tool {
   position: fixed;
-  top: 10px;
-  width: 200px;
+  top: 5px;
+  width: auto;
+  padding: 0px 10px;
   text-align: right;
   right: 10px;
-  height: 50px;
+  height: auto;
   line-height: 40px;
   z-index: 11;
   color: white;
+  background: #333;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 700px) {
