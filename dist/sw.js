@@ -1,5 +1,5 @@
 // cache-files.js 提供了 cacheName 和 files
-self.importScripts('/cache-files.js')
+self.importScripts('./cache-files.js')
 // 安装钩子，缓存所有文件
 self.addEventListener('install', e => {
   e.waitUntil(

@@ -2,8 +2,8 @@
 const cacheName = 'WordTyping-v1.0.0'
 // files 就是要缓存的文件列表，根据实际情况填写
 const files = [
-  '/src/words/dengding/all.json',
-  '/src/words/diji/all.json',
-  '/',
-  '/index.html'
+  './src/words/dengding/all.json',
+  './src/words/diji/all.json',
+  './',
+  './index.html'
 ]
