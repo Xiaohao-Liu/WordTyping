@@ -1,0 +1,16 @@
+{
+    "name": "WordTyping",
+    "short_name": "WordTyping",
+    "description": "Type words, Type all",
+    "start_url": "/", // 启动入口地址
+    "display": "minimal-ui", // 显示模式，minimal-ui 表示让应用有独立窗口，显示尽可能少的控制元素
+    "theme_color": "#000000", // 主题色，应用窗口顶标题栏的背景色
+    "background_color": "#000000", // 样式加载前的页面背景色
+    "icons": [
+      // 图标
+      {
+        "src": "logo/web_hi_res_512.png",
+        "sizes": "192x192"
+      }
+    ]
+  }
